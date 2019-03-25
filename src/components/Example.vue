@@ -1,10 +1,11 @@
 <template>
     <div class="app-container">
         <h3>Vue form generator element example</h3>
-        <el-form :model="model">
+        <el-form :model="model" label-width="12em">
             <VueFormGenerator :schema='schema' :model='model' :options="formOptions"></VueFormGenerator>
             <el-form-item>
-                <el-button type="primary" @click="">Save</el-button>
+                <el-button type="primary" @click="click">Save</el-button>
+                <el-button @click="">Cancel</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -12,18 +13,19 @@
 
 <script>
     import {component as VueFormGenerator} from 'vue-form-generator'
-
+    import {pretty} from 'js-object-pretty-print'
     export default {
         components: {VueFormGenerator},
         name: 'Example',
         data() {
             return {
                 model: {
-                    // input_number: 111777,
-                    // switch_val:'valueOff'
-                    // input_date_time:'2019-03-11T11:00:00'
+                    // input: 111777,
+                    // switch:'valueOff'
+                    // date:'2019-03-11T11:00:00'
                     color:'#ffd700',
-                    // select:1
+                    // select:1,
+                    // textarea:"text",
                 },
                 schema: {
                     groups: [
@@ -32,7 +34,7 @@
                         fields: [
                             {
                                 type: 'elementInput',
-                                model: 'input_number',
+                                model: 'input',
                                 id: 'input_id',
                                 inputName: 'input_name',
                                 featured: true,//not working (bold field)
@@ -49,8 +51,8 @@
                                 //text, textarea, number
                                 inputType: 'number',
                                 step: 0.1,
-                                elementLabel: 'Input number example',
-                                placeholder: 'Input number example',
+                                elementLabel: 'Input example',
+                                placeholder: 'Input example',
                                 min: 0,
                                 max:10,
                                 autocomplete: 'on',
@@ -61,7 +63,7 @@
                             },
                             {
                                 type: 'elementSwitch',
-                                model: 'switch_val',
+                                model: 'switch',
                                 id: 'switch_id',
                                 inputName: 'switch_name',
                                 //featured: true,//not working (bold field)
@@ -103,7 +105,7 @@
                             },
                             {
                                 type: 'elementDatePicker',
-                                model: 'input_date_time',
+                                model: 'date',
                                 //id: 'custom_element_id',//not working with datePicker
                                 inputName: 'date_picker_name',
                                 featured: true,//not working (bold field)
@@ -118,8 +120,8 @@
 
                                 clearable: true,
                                 firstDayOfWeek: 1,
-                                elementLabel: 'Date picker example',
-                                placeholder: 'Date picker example',
+                                elementLabel: 'DatePicker example',
+                                placeholder: 'DatePicker example',
                                 size: 'large',
                                 format: 'dd.MM.yyyy HH:mm:ss',
                                 align: 'left',
@@ -205,22 +207,68 @@
                                 automaticDropdown:false,
                                 default: 2,
                             },
-
-
-                            // {
-                            //     type: "input",
-                            //     inputType: "text",
-                            //     label: "Name",
-                            //     id: "full_name",
-                            //     readonly: false,
-                            //     featured: true,
-                            //     disabled: false,
-                            //     required: true,
-                            //     default: "Anonymous",
-                            //     model: "input",
-                            //     hint: "Please enter your full name",
-                            //     help: "This is an other longer help text",
-                            // }
+                            {
+                                type: 'elementSlider',
+                                model: 'slider',
+                                elementLabel: 'Slider example',
+                                // id: 'slider_id',//not working with Slider
+                                // inputName: 'slider_name', //not working with Slider
+                                visible: true,
+                                disabled: false,
+                                min: 10,
+                                max: 77,
+                                step: 5,
+                                debounce: 500,
+                                showInput: true,
+                                showInputControls: true,
+                                inputSize:'large',
+                                showStops:false,
+                                showTooltip:true,
+                                formatTooltip:function(v){return v;},
+                                range:false,
+                                default: 12
+                            },
+                            {
+                                type: 'elementTextArea',
+                                model: 'textarea',
+                                elementLabel: 'Textarea example',
+                                placeholder: 'Textarea example',
+                                id: 'textarea_id',
+                                inputName: 'textarea_name',
+                                visible: true,
+                                disabled: false,
+                                autosize: false,
+                                rows: 5,
+                                default: "default text value"
+                            },
+                            {
+                                type: 'elementUpload',
+                                model: 'upload',
+                                elementLabel: 'Upload example',
+                                placeholder: 'Click to upload',
+                                // id: 'upload_id',//not working with Uploader
+                                inputName: 'upload_name',
+                                action:'https://www.mocky.io/v2/5185415ba171ea3a00704eed',
+                                visible: true,
+                                disabled: false,
+                                onPreview:function(file){console.log(file);},
+                                onRemove:function(file, fileList){console.log(file);console.log(fileList);},
+                                onSuccess:function(response, file, fileList){console.log(response);console.log(file);console.log(fileList);},
+                                onError:function(err, file, fileList){console.log(err);console.log(file);console.log(fileList);},
+                                onProgress:function(event, file, fileList){console.log(event);console.log(file);console.log(fileList);},
+                                onChange:function(file, fileList){console.log(file);console.log(fileList);},
+                                beforeUpload:function(file){console.log(file);},
+                                beforeRemove:function(file, fileList){console.log(file);console.log(fileList);},
+                                onExceed:function(file, fileList){console.log(file);console.log(fileList);},
+                                httpRequest:function(){},
+                                thumbnailMode:true,
+                                fileList:[{name: 'linux.jpg', url: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Linux_logo.jpg'}],
+                                listType:"text", //picture,picture-card
+                                drag:false,
+                                multiple:true,
+                                limit:3,
+                                autoUpload:true,
+                            }
                         ],
                     }
                     ]
@@ -231,6 +279,19 @@
                 }
 
             }
+        },
+        methods:{
+            click:function () {
+                let res='';
+                let model=this.model
+                Object.keys(this.model).forEach(function(key){
+                    res+=key+": " + (typeof model[key]==="string"? "\""+model[key]+"\"":model[key])+"<br/>"
+                })
+                this.$alert(res, 'Form data', {
+                    confirmButtonText: 'OK',
+                    dangerouslyUseHTMLString: true
+                });
+            }
         }
     }
 </script>
@@ -238,6 +299,18 @@
 <style>
     .none {
         border: none;
+    }
+
+    .el-form-item__content {
+        text-align: left;
+    }
+
+    .app-container {
+        border: 1px solid #ebebeb;
+        border-radius: 3px;
+        transition: .2s;
+        width: 50%;
+        margin: 0 auto;
     }
 </style>
 

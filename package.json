@@ -7,8 +7,9 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "element-ui": "^2.4.11",
+    "element-ui": "^2.6",
     "fecha": "^3.0.2",
+    "js-object-pretty-print": "^0.3.0",
     "lodash": "^4.17.11",
     "vue": "^2.5.21",
     "vue-form-generator": "^2.2.1",
