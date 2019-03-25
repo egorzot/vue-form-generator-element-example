@@ -1,19 +1,18 @@
 {
   "name": "vue-form-generator-element-example",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@vue/eslint-config-prettier": "^4.0.1",
     "element-ui": "^2.6",
     "fecha": "^3.0.2",
-    "js-object-pretty-print": "^0.3.0",
     "lodash": "^4.17.11",
     "vue": "^2.5.21",
     "vue-form-generator": "^2.2.1",
-    "vue-form-generator-element": "file:../vue-form-generator-element"
+    "vue-form-generator-element": "^1.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",

@@ -10,8 +10,6 @@ Vue.use(ElementUI, { locale })
 import VueFormGeneratorElement from 'vue-form-generator-element'
 Vue.use(VueFormGeneratorElement)
 
-
-
 Vue.config.productionTip = false
 
 new Vue({

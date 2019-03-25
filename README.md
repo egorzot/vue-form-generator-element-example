@@ -1,4 +1,4 @@
-# vue-form-generator-element-example
+# Usage example of [vue-form-generator-element](https://github.com/egorzot/vue-form-generator-element)
 
 ## Project setup
 ```
@@ -19,11 +19,3 @@ yarn run build
 ```
 yarn run test
 ```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
