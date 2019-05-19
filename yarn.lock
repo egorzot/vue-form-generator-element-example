@@ -5999,10 +5999,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-form-generator-element@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/vue-form-generator-element/-/vue-form-generator-element-1.0.0.tgz#bcb462c800a12a5b50cc21bcb833fb686a9cfda9"
-  integrity sha512-59iFYzxOMRfAxAZKMveNPtChN3oneUiRpR80/WaasEw4z1zMrMPCLw5/QSi5UaGAX284M1Mn+47ORvXLXmvDvw==
+vue-form-generator-element@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vue-form-generator-element/-/vue-form-generator-element-1.1.0.tgz#fafa7f44b3de727c2cc77e8c2d8aa29df44c9b91"
+  integrity sha512-+j2ouMxfE0n7Q0HhLbpn9bVRz6Bm4eWMGJV4aTy8G9fVikTaeXrYTPI7KuSoibI5X5Qd18EQEq2DLLGjPE294A==
   dependencies:
     element-ui "^2.6.3"
     fecha "^3.0.2"
