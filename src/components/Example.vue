@@ -23,7 +23,8 @@ export default {
   data() {
     return {
       model: {
-        color: "#ffd700"
+        color: "#ffd700",
+        datetimerange: ["October 21, 2015 03:24:00","October 26, 2015 06:10:05"],
       },
       schema: {
         groups: [
@@ -101,9 +102,32 @@ export default {
                 size: "large",
                 format: "dd.MM.yyyy HH:mm:ss",
                 align: "left",
-                dateType: "datetime",
+                dateType: "date",
                 default: "October 21, 2015 03:24:00"
                 // defaultValue: '1999-02-12T12:46:00'
+              },
+              {
+                type: "elementDatePicker",
+                model: "datetimerange",
+                //id: 'custom_element_id',//not working with datePicker
+                inputName: "date_picker_range_name",
+                visible: true,
+                disabled: false,
+                required: true,
+                readonly: false,
+                editable: false,
+                clearable: true,
+                firstDayOfWeek: 1,
+                elementLabel: "DatePicker range",
+                size: "large",
+                format: "dd.MM.yyyy HH:mm:ss",
+                align: "left",
+                dateType: "datetimerange",
+                default: "October 21, 2015 03:24:00",
+                rangeSeparator: "To",
+                startPlaceholder: "Start placeholder",
+                endPlaceholder: "End placeholder",
+                unlinkPanels: true
               },
               {
                 type: "elementColorPicker",
